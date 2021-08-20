@@ -2,6 +2,7 @@ import React, {useState} from "react"
 import Header from "./components/header/Header"
 import Calculadora from "./components/calculadora/Calculadora"
 import Resultado from "./components/resultado/Resultado"
+import "./App.css"
 
 export default function App() {
   // States
@@ -11,7 +12,7 @@ export default function App() {
 
   // HandleChanges
   const handleChangeAltura = (component) => {
-    setAltura(component.target.value)
+    setAltura(component.target.value.replace(",", "."))
   }
 
   const handleChangePeso = (component) => {
@@ -20,12 +21,18 @@ export default function App() {
 
   // Calculo do imc
   const imcCalc = () => {
-    const calculo = peso / (altura * altura)
-    setImc(calculo)
+    if (altura > 100) {
+      const calculo = peso / ((altura/100) * (altura/100))
+      setImc(calculo)
+    } else {
+      const calculo = peso / (altura * altura)
+      setImc(calculo)
+    }
   }
 
   // Classificação do IMC
   const imcClassificacao = () => {
+    
     if (imc < 18.5) {
       return <p>Você está abaixo do peso.</p>
     } else if (imc >= 18.5 && imc < 24.9) {
@@ -42,11 +49,11 @@ export default function App() {
   }
 
   return (
-    <>
+    <section className="app">
       <Header/>
       <Calculadora altura={altura} peso={peso} handleChangeAltura={handleChangeAltura} handleChangePeso={handleChangePeso} imcCalc={imcCalc}/>
       <Resultado imc={imc} imcClassificacao={imcClassificacao}/>
-    </>
+    </section>
   )
 }
 

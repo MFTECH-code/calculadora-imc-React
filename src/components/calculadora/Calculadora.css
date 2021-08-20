@@ -1,0 +1,30 @@
+.formulario {
+    display: flex;
+    flex-direction: column;
+    padding: 80px;
+}
+
+.formulario label {
+    font-size: 25px;
+    margin: 5px 0;
+}
+
+.formulario input {
+    width: 300px;
+    height: 35px;
+    margin-bottom: 10px;
+    border-radius: 0;
+}
+
+.formulario button {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 25px;
+    border: none;
+    width: 50%;
+    height: 50px;
+    background-color: blue;
+    color: white;
+}
