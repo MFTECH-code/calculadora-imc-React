@@ -1,4 +1,7 @@
 import React, {useState} from "react"
+import Header from "./components/header/Header"
+import Calculadora from "./components/calculadora/Calculadora"
+import Resultado from "./components/resultado/Resultado"
 
 export default function App() {
   // States
@@ -40,18 +43,9 @@ export default function App() {
 
   return (
     <>
-      <h1>Calculadora de IMC</h1>
-      <section>
-          <label>Altura: </label>
-          <input type="text" name="faltura" value={altura} onChange={(e) => handleChangeAltura(e)}/>
-          <label>Peso: </label>
-          <input type="text" name="fpeso" value={peso} onChange={(e) => handleChangePeso(e)}/>
-          <button onClick={() => imcCalc()}>Calcular</button>
-      </section>
-      <section>
-        <h2>Resultado: {imc.toFixed(2)}</h2>
-        {imcClassificacao()}
-      </section>
+      <Header/>
+      <Calculadora altura={altura} peso={peso} handleChangeAltura={handleChangeAltura} handleChangePeso={handleChangePeso} imcCalc={imcCalc}/>
+      <Resultado imc={imc} imcClassificacao={imcClassificacao}/>
     </>
   )
 }
